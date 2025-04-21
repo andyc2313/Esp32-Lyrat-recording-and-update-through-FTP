@@ -16,7 +16,7 @@ This project is an ESP32-based audio recording system that captures audio data t
 
 ## 🔧 Mode Selection
 
-Two modes are available, and you can choose one via `idf.py menuconfig`:
+Two modes are available:
 
 1. **Sleep Mode** (`record and save to SD card.c`)
    - Records short clips (e.g., 1 min), saves to SD card.
