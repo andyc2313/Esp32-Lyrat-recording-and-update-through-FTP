@@ -47,38 +47,3 @@ Key parameters that can be adjusted in the code:
 4. Compile and upload the code to ESP32
 5. Connect external SD card and ensure microphone is working properly
 6. The system will automatically start the work cycle: recording → saving → uploading → deep sleep
-
-## Files to Upload
-
-Based on the provided code, you need to upload the following files:
-
-1. `pipeline_wav_amr_sdcard.c` - Main program file
-2. `FtpClient.h` - FTP client header file (referenced in the code)
-3. `FtpClient.c` - FTP client implementation (referenced in the code)
-4. `sdkconfig` or `sdkconfig.h` - Contains configurations like `CONFIG_FTP_SERVER`, `CONFIG_FTP_USER`, `CONFIG_FTP_PASSWORD`
-5. `CMakeLists.txt` - Project build configuration file (for ESP-IDF build system)
-6. `partitions.csv` (if using custom partition table)
-7. `README.md` - Project documentation
-
-If you're using an ESP-ADF framework example as a base, you may also need to ensure that relevant component configuration files are uploaded.
-
-## Notes
-
-- Ensure the FTP server has sufficient storage space
-- Check WiFi connection stability
-- Monitor SD card usage
-- Ensure stable power supply, especially when battery-powered
-
-## Troubleshooting
-
-- If the system fails to upload files, check WiFi connection and FTP server configuration
-- If recording quality is poor, check microphone connection and I2S configuration
-- If the device frequently restarts, check if the power supply is stable
-- View log output to diagnose specific issues
-
-## Improvement Suggestions
-
-- Add web interface for remote configuration
-- Implement local file management mechanism
-- Add audio pre-processing capabilities
-- Optimize power management to extend battery life# Esp32-Lyrat-recording-and-update-through-FTP
