@@ -4,16 +4,29 @@
 
 This project is an ESP32-based audio recording system that captures audio data through a microphone, saves it in WAV format to an SD card, and uploads the recorded files to a specified server via FTP. The system is designed to enter deep sleep mode after recording to conserve power and automatically wake up at predetermined intervals to continue operation.
 
-## Features
+## 📦 Project Structure
 
-- Audio data collection using ESP32's I2S interface
-- WAV format encoding and storage on SD card
-- WiFi connectivity for network operations
-- System time synchronization via SNTP
-- FTP protocol for uploading audio files to NAS or FTP server
-- Deep sleep functionality for low power consumption
-- Automatic deletion of successfully uploaded local files to free SD card space
-- Error handling and system restart mechanisms
+| File | Description |
+|------|-------------|
+| `FtpClient.c` / `FtpClient.h` | FTP client implementation for uploading recorded files to a NAS server. |
+| `record and save to SD card.c` | Code for **low-power recording mode**, saving short audio clips to the SD card with deep sleep between recordings. |
+| `long time record and upload NAS.c` | Code for **continuous recording mode**, continuously recording audio and uploading files to NAS via FTP. |
+| `sdkconfig` | Configuration file auto-generated via `idf.py menuconfig`. Contains selected mode and partition info. |
+| `README.md` | This documentation file. |
+
+## 🔧 Mode Selection
+
+Two modes are available, and you can choose one via `idf.py menuconfig`:
+
+1. **Sleep Mode** (`record and save to SD card.c`)
+   - Records short clips (e.g., 1 min), saves to SD card.
+   - Enters deep sleep between recordings for power saving.
+   - Suitable for long-term, battery-powered deployment.
+
+2. **Upload Mode** (`long time record and upload NAS.c`)
+   - Continuously records audio and saves it temporarily.
+   - After recording, uploads audio files via FTP to a NAS server.
+   - Suitable for stable power environments and real-time data access.
 
 ## Hardware Requirements
 
